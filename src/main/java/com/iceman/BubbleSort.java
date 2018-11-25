@@ -1,15 +1,23 @@
-package main.java.com.iceman;
+package com.iceman;
 
+/**
+ * @description :   冒泡排序
+ * @author :        ICEMAN
+ * @date :          2018\11\24 0024  10:31
+ * @version :       1.0
+ */
 public class BubbleSort {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3};
-        for (int number : arr) {
-            System.out.print(number);
+        int[] arr = CommonUtils.getRandomArray(10,10,false);
+        System.out.println("Before Sort:");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]+" ");
         }
         System.out.println();
-        swap(arr, 0, 1);
-        for (int number : arr) {
-            System.out.print(number);
+        System.out.println("After Sort:");
+        bubbleSort(arr);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]+" ");
         }
     }
     private static void bubbleSort(int[] arr) {
@@ -20,15 +28,10 @@ public class BubbleSort {
         for (int i = arr.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
                 if (arr[j] > arr[j + 1]) {
-                    swap(arr, arr[j], arr[j + 1]);
+                    CommonUtils.swap(arr, j, j + 1);
                 }
             }
         }
     }
 
-    private static void swap(int[] arr, int i, int j) {
-        arr[i] = arr[i] ^ arr[j];
-        arr[j] = arr[i] ^ arr[j];
-        arr[i] = arr[i] ^ arr[j];
-    }
 }
